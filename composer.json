@@ -1,0 +1,27 @@
+{
+    "name": "omar/YoutubeClient",
+    "license": "proprietary",
+    "keywords": [
+        "Youtube"
+    ],
+    "authors": [
+        {
+            "name": "Olivier Maréchal",
+            "email": "o.marechal@icloud.com"
+        }
+    ],
+    "require": {
+        "symfony/framework-bundle": "^4.0",
+        "google/apiclient": "^2.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Omar\\YoutubeClient\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\Omar\\YoutubeClient\\": "tests"
+        }
+    }
+}
