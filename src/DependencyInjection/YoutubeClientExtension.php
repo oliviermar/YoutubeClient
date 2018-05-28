@@ -1,6 +1,6 @@
 <?php
 
-namespace Omar\YoutubeClient\App\BundleDependencyInjection;
+namespace Omar\YoutubeClient\DependencyInjection;
 
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -20,5 +20,7 @@ class YoutubeClientExtension extends Extension
     public function load(array $configs, ContainerBuilder $container)
     {
         $loader = new YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config/services'));
+
+        $loader->load('google_connect.yml');
     }
 }

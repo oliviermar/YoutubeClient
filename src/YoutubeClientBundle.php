@@ -1,6 +1,6 @@
 <?php
 
-namespace Omar\YoutubeClient\App\Bundle;
+namespace Omar\YoutubeClient;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
