@@ -16,6 +16,9 @@ class Client implements GoogleClientInterface
     /** @var \Google_client */
     private $client;
 
+    /** @var UrlGeneratorInterface */
+    private $router;
+
     /** @var array */
     protected $scope = [
         'email',
@@ -34,6 +37,9 @@ class Client implements GoogleClientInterface
      */
     public function __construct(UrlGeneratorInterface $router, string $clientId, string $name, string $redirectPath, array $scope = [])
     {
+        $this->router = $router;
+        $this->scope = $scope;
+
         $this->client = new Google_client();
         $this->client->setClientId($clientId);
         $this->client->setApplicationName($name);
@@ -42,8 +48,6 @@ class Client implements GoogleClientInterface
         $this->client->setAccessType('offline');
         $this->client->setApprovalPrompt('force');
         $this->client->setState(uniqid());
-
-        $this->scope = $scope;
     }
 
     /**
