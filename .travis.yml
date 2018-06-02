@@ -8,14 +8,8 @@ cache:
   directories:
     - $HOME/.composer/cache/files
 
-before_script:
-  - phpize
-  - ./configure
-  - make
-  - make install
-  - echo "extension=ast.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
-
 before-install:
+  - ./tests/travis_setup.sh
   - composer self-update
 
 install:
