@@ -5,7 +5,7 @@ if [[ "x${TRAVIS:-}" == "x" ]]; then
 fi
 
 set -xeu
-
+echo "Start config travis config"
 # Ensure the build directory exist
 PHP_VERSION_ID=$(php -r "echo PHP_VERSION_ID . '_' . PHP_DEBUG . '_' . PHP_ZTS;")
 PHAN_BUILD_DIR="$HOME/.cache/phan-ast"
