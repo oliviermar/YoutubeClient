@@ -1,0 +1,16 @@
+language: php
+
+sudo: false
+
+cache:
+  directories:
+    - $HOME/.composer/cache/files
+
+before-install:
+  - composer self-update
+
+install:
+  - composer install
+
+script:
+  ./vendor/bin/phan

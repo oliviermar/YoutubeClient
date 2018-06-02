@@ -96,7 +96,7 @@ class Client implements GoogleClientInterface
      *
      * @return string
      */
-    protected functon getScope(array $scope = []): string
+    protected function getScope(array $scope = []): string
     {
         if (count($scope) > 0) {
             return implode(' ', $scope);

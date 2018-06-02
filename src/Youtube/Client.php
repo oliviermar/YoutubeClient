@@ -2,7 +2,7 @@
 
 namespace Omar\YoutubeClient\Youtube;
 
-use Omar\YoutubeClient\Google\GoogleClientnterface;
+use Omar\YoutubeClient\Google\GoogleClientInterface;
 
 /**
  * Class Client
