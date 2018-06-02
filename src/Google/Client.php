@@ -5,6 +5,7 @@ namespace Omar\YoutubeClient\Google;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Routing\Exception\RouteNotFoundException;
 use Omar\YoutubeClient\Google\Exception\InvalidRedirectPathException;
+use Omar\YoutubeClient\Google\ResourceOwner\OAuthResourceOwner;
 
 /**
  * Class Client
@@ -72,7 +73,7 @@ class Client implements GoogleClientInterface
      * @param $code
      *
      * @throws \Exception
-     * @return array
+     * @return OAuthResourceOwner
      */
     public function authorize(string $code): array
     {
@@ -84,10 +85,10 @@ class Client implements GoogleClientInterface
                 $this->client->setAccessToken($authentication);
             }
 
-            return $result; // TODO Create object model GoogleAuthResponse
+            return new OAuthResourceOwner($result);
         }
 
-        throw new \Exception('error'); // TODO get error for good redirection
+        throw new \Exception('Google connection fail'); // TODO create custom exception and add error message in response
     }
 
     /**
