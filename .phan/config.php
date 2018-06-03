@@ -290,10 +290,10 @@ return [
     // your application should be included in this list.
     'directory_list' => [
         'src',
-        'vendor/Symfony/framework-bundle',
-        'vendor/Symfony/http-kernel',
-        'vendor/Symfony/dependency-injection',
-        'vendor/Symfony/routing',
+        'vendor/symfony/framework-bundle',
+        'vendor/symfony/http-kernel',
+        'vendor/symfony/dependency-injection',
+        'vendor/symfony/routing',
         'vendor/google/apiclient/src/google'
     ],
 
