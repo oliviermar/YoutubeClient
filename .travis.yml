@@ -1,0 +1,21 @@
+language: php
+php:
+  - '7.1'
+
+env: 
+  - PHAN_DISABLE_XDEBUG_WARN=1
+sudo: false
+dist: trusty
+
+cache:
+  directories:
+    - $HOME/.composer/cache
+    - $HOME/.cache/phan-ast/build
+    - $HOME/.phan-ci
+
+install:
+  - pecl install ast
+  - composer install
+
+script:
+  ./vendor/bin/phan

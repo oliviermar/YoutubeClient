@@ -2,6 +2,8 @@
 
 namespace Omar\YoutubeClient\Google;
 
+use Omar\YoutubeClient\Google\ResourceOwner\OAuthResourceOwner;
+
 /**
  * Interface GoogleClientInterface
  *
@@ -33,7 +35,7 @@ interface GoogleClientInterface
      *
      * @param string $code
      *
-     * @return array
+     * @return OAuthResourceOwner
      */
-    public function authorize(string $code): array;
+    public function authorize(string $code): OAuthResourceOwner;
 }

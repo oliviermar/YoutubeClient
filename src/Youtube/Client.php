@@ -2,7 +2,7 @@
 
 namespace Omar\YoutubeClient\Youtube;
 
-use Omar\YoutubeClient\Google\GoogleClientnterface;
+use Omar\YoutubeClient\Google\GoogleClientInterface;
 
 /**
  * Class Client
@@ -11,20 +11,20 @@ use Omar\YoutubeClient\Google\GoogleClientnterface;
  */
 class Client
 {
-    /** @var GoogleClientInterface */
-    private $googeClient;
+    /** @var \Google_client */
+    private $googleClient;
 
-    /** @var \Google_Service_YouTube_ */
+    /** @var \Google_Service_Youtube */
     private $client;
 
     /**
      * Client constructor
      *
-     * @param GoogleClientInterface $googleCLient
+     * @param GoogleClientInterface $googleClient
      */
     public function __construct(GoogleClientInterface $googleClient)
     {
         $this->googleClient = $googleClient->getClient();
-        $this->client = new \Google_Service_Client($googleClient);
+        $this->client = new \Google_Service_Youtube($this->googleClient);
     }
 }

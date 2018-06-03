@@ -39,9 +39,11 @@ class Client implements GoogleClientInterface
     public function __construct(UrlGeneratorInterface $router, string $clientId, string $name, string $redirectPath, array $scope = [])
     {
         $this->router = $router;
-        $this->scope = $scope;
+        if (count($scope) > 0) {
+            $this->scope = $scope;
+        }
 
-        $this->client = new Google_client();
+        $this->client = new \Google_client();
         $this->client->setClientId($clientId);
         $this->client->setApplicationName($name);
         $this->client->setDeveloperKey($clientId);
@@ -64,7 +66,7 @@ class Client implements GoogleClientInterface
      *
      * @return string
      */
-    protected function getAuthUrl(array $scope = []): string
+    public function getAuthUrl(array $scope = []): string
     {
         return $this->client->createAuthUrl($this->getScope($scope));
     }
@@ -75,7 +77,7 @@ class Client implements GoogleClientInterface
      * @throws \Exception
      * @return OAuthResourceOwner
      */
-    public function authorize(string $code): array
+    public function authorize(string $code): OAuthResourceOwner
     {
         $authentication = $this->client->fetchAccessTokenWithAuthCode($code);
         if (array_key_exists('id_token', $authentication)) {
@@ -96,7 +98,7 @@ class Client implements GoogleClientInterface
      *
      * @return string
      */
-    protected functon getScope(array $scope = []): string
+    protected function getScope(array $scope = []): string
     {
         if (count($scope) > 0) {
             return implode(' ', $scope);
@@ -108,7 +110,7 @@ class Client implements GoogleClientInterface
     /**
      * @param string $path
      *
-     * @throw InvalidRedirectPathException
+     * @throws InvalidRedirectPathException
      *
      * @return string
      */
