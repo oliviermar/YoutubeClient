@@ -11,10 +11,8 @@ cache:
     - $HOME/.cache/phan-ast/build
     - $HOME/.phan-ci
 
-before-install:
-  - pecl install ast
-
 install:
+  - pecl install ast
   - composer install
 
 script:
