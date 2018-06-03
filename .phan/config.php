@@ -294,7 +294,7 @@ return [
         'vendor/symfony/http-kernel',
         'vendor/symfony/dependency-injection',
         'vendor/symfony/routing',
-        'vendor/google/apiclient/src/google'
+        'vendor/google/apiclient/src/Google'
     ],
 
     // A list of individual files to include in analysis
