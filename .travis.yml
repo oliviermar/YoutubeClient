@@ -2,6 +2,9 @@ language: php
 php:
   - '7.1'
 
+env: 
+  - PHAN_ALLOW_XDEBUG=0
+  - PHAN_DISABLE_XDEBUG_WARN=1
 sudo: false
 dist: trusty
 
