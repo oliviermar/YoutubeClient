@@ -290,15 +290,17 @@ return [
     // your application should be included in this list.
     'directory_list' => [
         'src',
-        'vendor/google/apiclient/src',
-        'vendor/google/apiclient/src/Google/Service',
-        'vendor/phan/phan/src/Phan',
-        'vendor/symfony/framework-bundle',
-        'vendor/symfony/routing',
+        'vendor/Symfony/framework-bundle',
+        'vendor/Symfony/http-kernel',
+        'vendor/Symfony/dependency-injection',
+        'vendor/Symfony/routing',
+        'vendor/google/apiclient/src/google'
     ],
 
     // A list of individual files to include in analysis
     // with a path relative to the root directory of the
     // project
-    'file_list' => [],
+    'file_list' => [
+        'vendor/google/apiclient-services/src/Google/Service/YouTube.php'
+    ],
 ];

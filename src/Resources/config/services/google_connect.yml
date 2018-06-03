@@ -1,5 +1,0 @@
-services:
-    Omar\YoutubeClient\Google\Connect:
-        public: false
-        autowire: true
-        autoconfigure: true

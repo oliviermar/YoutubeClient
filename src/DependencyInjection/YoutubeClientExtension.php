@@ -2,10 +2,12 @@
 
 namespace Omar\YoutubeClient\DependencyInjection;
 
-use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
+use Symfony\Component\DependencyInjection\Definition;
+use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
+use Symfony\Bundle\FrameworkBundle\DependencyInjection\Configuration;
+use Omar\YoutubeClient\Google\Client as GoogleClient;
 
 /**
  * Class YoutubeClientExtension
@@ -19,8 +21,21 @@ class YoutubeClientExtension extends Extension
      */
     public function load(array $configs, ContainerBuilder $container)
     {
-        $loader = new YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config/services'));
+        $configuration = new Configuration();
+        $config = $this->processConfiguration($configuration, $configs);
 
-        $loader->load('google_connect.yml');
+        $googleClientDefinition = new Definition(
+            GoogleClient::class,
+            [
+                new Reference('router'),
+                $config['google']['client_id'],
+                $config['google']['name'],
+                $config['google']['redirect_uri'],
+                $config['google']['scope'],
+            ]
+        );
+
+        $googleClientDefinition->setPublic(true);
+        $container->setDefinition(GoogleClient::class, $googleClientDefinition);
     }
 }
